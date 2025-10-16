@@ -1,0 +1,173 @@
+// ===============================================
+//  _variables.scss
+//  Glassmorphism Dashboard Theme Variables
+// ===============================================
+
+// Primary Colors
+$color-primary: #5b6ce2;
+$color-secondary: #f0f2f8;
+$color-accent: #ffb347;
+$color-success: #4caf50;
+$color-error: #f44336;
+$color-warning: #ff9800;
+$color-info: #2196f3;
+
+// Light Theme Colors
+$light-bg: #f9f9fb;
+$light-surface: #ffffff;
+$light-text: #1e1e2f;
+$light-text-secondary: #6b7280;
+$light-border: rgba(0, 0, 0, 0.05);
+
+// Dark Theme Colors
+$dark-bg: #121212;
+$dark-surface: #1c1c1f;
+$dark-text: #f5f5f7;
+$dark-text-secondary: #9ca3af;
+$dark-border: rgba(255, 255, 255, 0.08);
+
+// Glassmorphism Variables
+$glass-blur: 20px;
+$glass-light-bg: rgba(255, 255, 255, 0.55);
+$glass-dark-bg: rgba(30, 30, 30, 0.45);
+$glass-border-light: rgba(255, 255, 255, 0.4);
+$glass-border-dark: rgba(255, 255, 255, 0.15);
+$glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+
+// Border Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 20px;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+
+// Typography
+$font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 1.875rem;
+
+// Z-index
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+
+// Breakpoints
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// Animation
+$transition-base: 0.3s ease;
+$transition-fast: 0.15s ease;
+$transition-slow: 0.5s ease;
+
+// Glass Mode Toggle
+$enable-glass: true; // Global toggle for glass mode
+
+// ===============================================
+//  Mixins
+// ===============================================
+
+@mixin glass-container($mode: light) {
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+  border-radius: $radius-md;
+  box-shadow: $glass-shadow;
+  transition: all $transition-base;
+
+  @if $mode == light {
+    background: $glass-light-bg;
+    border: 1px solid $glass-border-light;
+  } @else {
+    background: $glass-dark-bg;
+    border: 1px solid $glass-border-dark;
+  }
+}
+
+@mixin normal-container($mode: light) {
+  border-radius: $radius-md;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all $transition-base;
+
+  @if $mode == light {
+    background: $light-surface;
+    border: 1px solid $light-border;
+  } @else {
+    background: $dark-surface;
+    border: 1px solid $dark-border;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin hover-lift {
+  transition: transform $transition-fast;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// Responsive breakpoints
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: #{$breakpoint-sm - 1px}) {
+      @content;
+    }
+  }
+  @if $breakpoint == sm {
+    @media (min-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  }
+  @if $breakpoint == md {
+    @media (min-width: #{$breakpoint-md}) {
+      @content;
+    }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  }
+}
