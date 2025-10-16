@@ -171,7 +171,7 @@ const ReportsPage: React.FC = () => {
         <Card sx={{ ...glassStyles, mb: 4 }}>
           <CardContent>
             <Grid container spacing={3} alignItems="center">
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid {...({ item: true, xs: 12, sm: 6, md: 3 } as any)}>
                 <FormControl fullWidth>
                   <InputLabel>Report Type</InputLabel>
                   <Select
@@ -188,7 +188,7 @@ const ReportsPage: React.FC = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid {...({ item: true, xs: 12, sm: 6, md: 3 } as any)}>
                 <FormControl fullWidth>
                   <InputLabel>Date Range</InputLabel>
                   <Select
@@ -207,7 +207,7 @@ const ReportsPage: React.FC = () => {
 
               {dateRange === 'custom' && (
                 <>
-                  <Grid item xs={12} sm={6} md={2}>
+                  <Grid {...({ item: true, xs: 12, sm: 6, md: 2 } as any)}>
                     <MuiDatePicker
                       label="Start Date"
                       value={startDate}
@@ -215,7 +215,7 @@ const ReportsPage: React.FC = () => {
                       slotProps={{ textField: { fullWidth: true } }}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6} md={2}>
+                  <Grid {...({ item: true, xs: 12, sm: 6, md: 2 } as any)}>
                     <MuiDatePicker
                       label="End Date"
                       value={endDate}
@@ -226,7 +226,7 @@ const ReportsPage: React.FC = () => {
                 </>
               )}
 
-              <Grid item xs={12} md={2}>
+              <Grid {...({ item: true, xs: 12, md: 2 } as any)}>
                 <ExportButtons
                   data={mockTransactionData}
                   filename="financial-report"
@@ -240,7 +240,7 @@ const ReportsPage: React.FC = () => {
 
         {/* Summary Cards */}
         <Grid container spacing={3} sx={{ mb: 4 }}>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid {...({ item: true, xs: 12, sm: 6, md: 3 } as any)}>
             <Card sx={{ ...glassStyles }}>
               <CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
@@ -272,7 +272,7 @@ const ReportsPage: React.FC = () => {
             </Card>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid {...({ item: true, xs: 12, sm: 6, md: 3 } as any)}>
             <Card sx={{ ...glassStyles }}>
               <CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
@@ -304,7 +304,7 @@ const ReportsPage: React.FC = () => {
             </Card>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid {...({ item: true, xs: 12, sm: 6, md: 3 } as any)}>
             <Card sx={{ ...glassStyles }}>
               <CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
@@ -336,7 +336,7 @@ const ReportsPage: React.FC = () => {
             </Card>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid {...({ item: true, xs: 12, sm: 6, md: 3 } as any)}>
             <Card sx={{ ...glassStyles }}>
               <CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
@@ -371,7 +371,7 @@ const ReportsPage: React.FC = () => {
 
         {/* Charts */}
         <Grid container spacing={3} sx={{ mb: 4 }}>
-          <Grid item xs={12} lg={8}>
+          <Grid {...({ item: true, xs: 12, lg: 8 } as any)}>
             <LineChart
               data={mockRevenueData}
               title="Revenue Trend"
@@ -379,7 +379,7 @@ const ReportsPage: React.FC = () => {
               enableArea={true}
             />
           </Grid>
-          <Grid item xs={12} lg={4}>
+          <Grid {...({ item: true, xs: 12, lg: 4 } as any)}>
             <BarChart
               data={mockExpenseData}
               keys={['amount', 'budget']}

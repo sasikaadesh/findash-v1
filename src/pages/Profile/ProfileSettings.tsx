@@ -169,7 +169,7 @@ const ProfileSettings: React.FC = () => {
 
       <Grid container spacing={3}>
         {/* Profile Information */}
-        <Grid item xs={12} md={8}>
+        <Grid {...({ item: true, xs: 12, md: 8 } as any)}>
           <Card sx={{ ...glassStyles, mb: 3 }}>
             <CardContent>
               <Typography variant="h6" fontWeight={600} gutterBottom>
@@ -212,7 +212,7 @@ const ProfileSettings: React.FC = () => {
               </Box>
 
               <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
+                <Grid {...({ item: true, xs: 12, sm: 6 } as any)}>
                   <TextField
                     fullWidth
                     label="Full Name"
@@ -228,7 +228,7 @@ const ProfileSettings: React.FC = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid {...({ item: true, xs: 12, sm: 6 } as any)}>
                   <TextField
                     fullWidth
                     label="Email Address"
@@ -268,7 +268,7 @@ const ProfileSettings: React.FC = () => {
               </Typography>
               
               <Grid container spacing={3}>
-                <Grid item xs={12}>
+                <Grid {...({ item: true, xs: 12 } as any)}>
                   <TextField
                     fullWidth
                     label="Current Password"
@@ -295,7 +295,7 @@ const ProfileSettings: React.FC = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid {...({ item: true, xs: 12, sm: 6 } as any)}>
                   <TextField
                     fullWidth
                     label="New Password"
@@ -322,7 +322,7 @@ const ProfileSettings: React.FC = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid {...({ item: true, xs: 12, sm: 6 } as any)}>
                   <TextField
                     fullWidth
                     label="Confirm New Password"
@@ -366,7 +366,7 @@ const ProfileSettings: React.FC = () => {
         </Grid>
 
         {/* Settings Sidebar */}
-        <Grid item xs={12} md={4}>
+        <Grid {...({ item: true, xs: 12, md: 4 } as any)}>
           {/* Theme Settings */}
           <Box sx={{ mb: 3 }}>
             <ThemeSwitcher />

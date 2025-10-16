@@ -28,7 +28,7 @@ import { useTheme } from '../../theme';
 import { getGlassCardStyles } from '../../theme/glassThemeUtils';
 import { formatCurrency, formatPercentage } from '../../utils/helpers';
 
-export interface DataTableColumn extends Omit<GridColDef, 'renderCell'> {
+export interface DataTableColumn extends Omit<GridColDef, 'renderCell' | 'type'> {
   field: string;
   headerName: string;
   type?: 'string' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'avatar' | 'chip' | 'actions';
@@ -68,7 +68,7 @@ const DataTable: React.FC<DataTableProps> = ({
 
   // Enhanced column rendering
   const enhancedColumns: GridColDef[] = columns.map((col) => {
-    const baseColumn: GridColDef = {
+    const baseColumn: any = {
       ...col,
       headerAlign: 'left',
       align: col.type === 'number' || col.type === 'currency' || col.type === 'percentage' ? 'right' : 'left',
@@ -195,7 +195,7 @@ const DataTable: React.FC<DataTableProps> = ({
       }
     }
 
-    return baseColumn;
+    return baseColumn as GridColDef;
   });
 
   return (

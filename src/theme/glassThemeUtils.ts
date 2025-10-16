@@ -143,7 +143,7 @@ export const createGlassTheme = (baseTheme: Theme, options: GlassThemeOptions): 
         styleOverrides: {
           ...baseTheme.components?.MuiCard?.styleOverrides,
           root: {
-            ...baseTheme.components?.MuiCard?.styleOverrides?.root,
+            ...(baseTheme.components?.MuiCard?.styleOverrides?.root as any || {}),
             ...getGlassCardStyles(options),
           },
         },
@@ -153,7 +153,7 @@ export const createGlassTheme = (baseTheme: Theme, options: GlassThemeOptions): 
         styleOverrides: {
           ...baseTheme.components?.MuiPaper?.styleOverrides,
           root: {
-            ...baseTheme.components?.MuiPaper?.styleOverrides?.root,
+            ...(baseTheme.components?.MuiPaper?.styleOverrides?.root as any || {}),
             ...getGlassCardStyles(options),
           },
         },
@@ -163,7 +163,7 @@ export const createGlassTheme = (baseTheme: Theme, options: GlassThemeOptions): 
         styleOverrides: {
           ...baseTheme.components?.MuiAppBar?.styleOverrides,
           root: {
-            ...baseTheme.components?.MuiAppBar?.styleOverrides?.root,
+            ...(baseTheme.components?.MuiAppBar?.styleOverrides?.root as any || {}),
             ...getGlassHeaderStyles(options),
           },
         },
@@ -173,7 +173,7 @@ export const createGlassTheme = (baseTheme: Theme, options: GlassThemeOptions): 
         styleOverrides: {
           ...baseTheme.components?.MuiDrawer?.styleOverrides,
           paper: {
-            ...baseTheme.components?.MuiDrawer?.styleOverrides?.paper,
+            ...(baseTheme.components?.MuiDrawer?.styleOverrides?.paper as any || {}),
             ...getGlassSidebarStyles(options),
           },
         },
