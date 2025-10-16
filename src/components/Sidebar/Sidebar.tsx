@@ -111,7 +111,14 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose, variant = 'temporary' 
           : [...prev, item.id]
       );
     } else if (item.path) {
-      // Navigate to the path
+      // Disable navigation for specific Reports submenu items
+      const disabledItems = ['financial-reports', 'performance-reports'];
+      if (disabledItems.includes(item.id)) {
+        // Do nothing - navigation is disabled for these items
+        return;
+      }
+
+      // Navigate to the path for all other items
       navigate(item.path);
       if (variant === 'temporary') {
         onClose();
@@ -138,11 +145,16 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose, variant = 'temporary' 
     const isActive = isItemActive(item.path);
     const isParentItemActive = isParentActive(item);
 
+    // Check if this item is disabled
+    const disabledItems = ['financial-reports', 'performance-reports'];
+    const isDisabled = disabledItems.includes(item.id);
+
     return (
       <React.Fragment key={item.id}>
         <ListItem disablePadding>
           <ListItemButton
             onClick={() => handleItemClick(item)}
+            disabled={isDisabled}
             sx={{
               pl: 2 + level * 2,
               py: 1.5,
@@ -150,19 +162,35 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose, variant = 'temporary' 
               mx: 1,
               mb: 0.5,
               backgroundColor: isActive ? 'primary.main' : 'transparent',
-              color: isActive ? 'primary.contrastText' : 'inherit',
+              color: isDisabled
+                ? 'text.disabled'
+                : isActive
+                ? 'primary.contrastText'
+                : 'inherit',
+              cursor: isDisabled ? 'not-allowed' : 'pointer',
               '&:hover': {
-                backgroundColor: isActive
+                backgroundColor: isDisabled
+                  ? 'transparent'
+                  : isActive
                   ? 'primary.dark'
                   : isDarkMode
                   ? 'rgba(255, 255, 255, 0.08)'
                   : 'rgba(0, 0, 0, 0.04)',
               },
+              '&.Mui-disabled': {
+                opacity: 0.5,
+              },
             }}
           >
             <ListItemIcon
               sx={{
-                color: isActive ? 'primary.contrastText' : isParentItemActive ? 'primary.main' : 'inherit',
+                color: isDisabled
+                  ? 'text.disabled'
+                  : isActive
+                  ? 'primary.contrastText'
+                  : isParentItemActive
+                  ? 'primary.main'
+                  : 'inherit',
                 minWidth: 40,
               }}
             >
